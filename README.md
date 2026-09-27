@@ -2,6 +2,10 @@
 
 **Documentation engineered.**
 
+A practical approach to building, operating, and scaling documentation as code.
+
+**[View DocOps live →](https://hollyabrams.github.io/docops/)**
+
 DocOps is an open-source demonstration of documentation engineering in practice—a working environment for exploring how documentation can be built, operated, tested, governed, and maintained like software.
 
 ![DocOps homepage](docs/assets/docops-home.png)
