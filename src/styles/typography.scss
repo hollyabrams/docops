@@ -1,0 +1,22 @@
+@use "variables" as *;
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: -0.03em;
+}
+
+a {
+  transition: opacity 150ms ease;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
