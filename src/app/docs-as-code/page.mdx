@@ -1,0 +1,133 @@
+<p className="eyebrow">Docs as Code</p>
+
+# Documentation belongs in the development workflow.
+
+DocOps treats documentation as versioned, reviewable, testable, and maintainable source. Documentation changes move through the same engineering practices used to build and ship software.
+
+## Overview
+
+Docs as code applies software development practices to documentation.
+
+Instead of managing documentation exclusively through a content management system or isolated authoring environment, source files live in version control alongside the tools required to build, validate, and publish them.
+
+This creates a traceable workflow in which documentation can be reviewed, tested, automated, and improved continuously.
+
+A docs-as-code system typically provides:
+
+- **Version control** for documentation source.
+- **Peer review** through pull requests.
+- **Automated validation** before changes are published.
+- **Repeatable builds** across development and production environments.
+- **Deployment automation** through CI/CD.
+- **Change history** that records what changed, when, and why.
+
+## Architecture
+
+DocOps separates content, presentation, validation, and delivery while keeping them within one version-controlled system.
+
+```text
+Documentation source
+        ↓
+       Git
+        ↓
+   Pull request
+        ↓
+Automated validation
+        ↓
+      Build
+        ↓
+     Deploy
+        ↓
+Published documentation
+```
+
+The DocOps application uses Next.js and MDX to combine structured documentation content with reusable React components.
+
+SCSS controls presentation independently from documentation source, while GitHub Actions provides the foundation for automated validation and deployment.
+
+## Repository
+
+Documentation infrastructure should be understandable from the repository itself.
+
+DocOps organizes application routes, reusable components, styles, documentation assets, and automation separately:
+
+```text
+docops/
+├── .github/
+│   └── workflows/
+├── docs/
+│   └── assets/
+├── src/
+│   ├── app/
+│   ├── components/
+│   └── styles/
+├── mdx-components.tsx
+├── next.config.ts
+└── package.json
+```
+
+This separation keeps content maintainable without hiding the engineering system that supports it.
+
+## Local development
+
+Contributors should be able to reproduce the documentation environment locally.
+
+Install project dependencies:
+
+```bash
+npm install
+```
+
+Start the local development server:
+
+```bash
+just run
+```
+
+The development environment provides fast feedback before a documentation change enters review.
+
+A production build can be validated locally with:
+
+```bash
+npm run build
+```
+
+## Git workflow
+
+Documentation changes follow a version-controlled workflow.
+
+1. Create or update documentation source.
+2. Review the change locally.
+3. Run the required validation.
+4. Commit the change with a meaningful message.
+5. Push the change to the remote repository.
+6. Review and merge through the established contribution process.
+
+Small, focused commits make documentation history easier to understand and changes easier to review.
+
+## Validation
+
+Publishing documentation should not depend entirely on manual inspection.
+
+A mature documentation pipeline can validate:
+
+- application builds
+- broken links
+- style rules
+- required metadata
+- OpenAPI specifications
+- code examples
+- accessibility requirements
+- stale content signals
+
+DocOps will progressively implement these checks as executable tooling rather than describing them only as recommendations.
+
+## Publishing
+
+DocOps currently uses GitHub Actions to build and deploy the application to GitHub Pages.
+
+A push to the production branch triggers the deployment workflow. The workflow installs dependencies, creates a production build, uploads the static output, and deploys the resulting site.
+
+This makes the deployment configuration part of the repository and gives publishing the same traceability as the documentation itself.
+
+**The system described by DocOps is also the system used to build DocOps.**
