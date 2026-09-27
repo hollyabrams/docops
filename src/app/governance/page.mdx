@@ -1,0 +1,82 @@
+import OwnershipModel from "@/components/OwnershipModel/OwnershipModel";
+
+<p className="eyebrow">Governance</p>
+
+# Clear ownership makes documentation scalable.
+
+Documentation governance defines how decisions are made, who is accountable for content, and what must happen before information becomes part of the maintained documentation system.
+
+## Overview
+
+Governance should create clarity without creating unnecessary bureaucracy.
+
+A useful governance model establishes:
+
+- who owns documentation
+- who validates technical information
+- who can approve changes
+- what level of review a change requires
+- how content enters and leaves the maintained documentation set
+- how exceptions are handled
+
+The goal is not to centralize every decision with a documentation team. The goal is to make responsibility explicit.
+
+## Principles
+
+DocOps governance follows a few core principles.
+
+### Ownership is explicit
+
+Maintained documentation has an identifiable owner. Content should not become permanently ownerless after publication.
+
+### Review matches risk
+
+A small wording correction should not require the same process as a breaking API change.
+
+Review requirements should reflect the potential impact of publishing incorrect or incomplete information.
+
+### Source expertise stays close to the source
+
+Documentation teams should not be expected to independently determine product behavior.
+
+Subject matter experts validate the underlying technical information. Documentation owners determine how that information should be structured, explained, and maintained.
+
+### Governance supports contribution
+
+A governance model should make contribution safer and easier—not reserve documentation work for a small group of people.
+
+Clear standards and review paths allow more contributors to participate without sacrificing quality.
+
+## Roles
+
+Documentation quality is a shared responsibility, but shared responsibility does not mean undefined responsibility.
+
+<OwnershipModel />
+
+These roles describe responsibilities rather than required job titles. On a small team, one person may fulfill multiple roles.
+
+What matters is that the responsibility exists and is understood.
+
+## Ownership
+
+Ownership should be established at a level that can realistically be maintained.
+
+Depending on the documentation system, ownership might be assigned by:
+
+- product
+- API
+- feature
+- documentation section
+- repository directory
+- content type
+
+Ownership information can eventually be represented as metadata and validated automatically.
+
+For example:
+
+```yaml
+owner: developer-experience
+reviewers:
+  - api-platform
+content_type: guide
+review_interval: 180

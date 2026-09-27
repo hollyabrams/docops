@@ -1,0 +1,45 @@
+@use "../../styles/variables" as *;
+
+.model {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 36px 0 48px;
+  border-top: 1px solid $color-border;
+  border-left: 1px solid $color-border;
+}
+
+.role {
+  min-height: 190px;
+  padding: 28px;
+  border-right: 1px solid $color-border;
+  border-bottom: 1px solid $color-border;
+
+  .area {
+    margin: 0 0 34px;
+    color: $color-secondary;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+  }
+
+  p {
+    margin: 0;
+    color: $color-secondary;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: $mobile) {
+  .model {
+    grid-template-columns: 1fr;
+  }
+
+  .role {
+    min-height: auto;
+  }
+}
