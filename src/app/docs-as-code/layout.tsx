@@ -1,5 +1,4 @@
-import Link from "next/link";
-import styles from "./docs.module.scss";
+import DocsLayout from "@/components/DocsLayout/DocsLayout";
 
 const navigation = [
   { label: "Overview", href: "#overview" },
@@ -17,20 +16,8 @@ export default function DocsAsCodeLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className={styles.docsLayout}>
-      <aside className={styles.sidebar}>
-        <p className={styles.sidebarTitle}>Docs as Code</p>
-
-        <nav aria-label="Docs as Code">
-          {navigation.map((item) => (
-            <Link key={item.href} href={item.href}>
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-      </aside>
-
-      <article className={styles.content}>{children}</article>
-    </div>
+    <DocsLayout title="Docs as Code" navigation={navigation}>
+      {children}
+    </DocsLayout>
   );
 }

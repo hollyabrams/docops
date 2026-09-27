@@ -1,0 +1,166 @@
+<p className="eyebrow">Standards</p>
+
+# Consistency is an engineering decision.
+
+Documentation standards reduce ambiguity, improve usability, and make large documentation systems easier to maintain. They give contributors a shared framework for making decisions without requiring every decision to be made from scratch.
+
+## Overview
+
+A documentation style guide is more than a list of grammar preferences.
+
+Effective standards define how information is structured, how instructions are written, how technical concepts are presented, and how contributors make consistent decisions across a documentation system.
+
+DocOps standards prioritize:
+
+- **Clarity** over cleverness.
+- **Consistency** across related content.
+- **Scannability** for readers looking for specific information.
+- **Actionable language** for task-oriented documentation.
+- **Technical accuracy** over unnecessary simplification.
+- **Maintainability** for future contributors.
+
+## Voice and tone
+
+Write clearly, directly, and professionally.
+
+Use language that helps the reader understand what something does or complete a task without adding unnecessary personality or conversational filler.
+
+Prefer:
+
+> Configure the API key before sending the request.
+
+Avoid:
+
+> You'll want to make sure you've configured your API key before you try sending your request.
+
+The first version is shorter, more direct, and easier to scan.
+
+### Write for the reader
+
+Describe the system from the reader's perspective. Introduce concepts when they are needed and avoid requiring knowledge that has not yet been established.
+
+Do not assume that familiarity with one part of a product implies familiarity with another.
+
+## Structure
+
+Use headings to expose the information architecture of a page.
+
+A reader should be able to scan headings and understand the page without reading every paragraph.
+
+### Headings
+
+Use descriptive headings that identify the content that follows.
+
+Prefer:
+
+> Configure authentication
+
+Avoid:
+
+> How do I configure authentication?
+
+Use sentence case unless a product or technology name requires different capitalization.
+
+### Paragraphs
+
+Keep paragraphs focused on one idea. Move supporting details into separate paragraphs, lists, examples, or notes when doing so improves scanning.
+
+## Procedures
+
+Use numbered steps when order matters.
+
+Each step should begin with an action and contain the information necessary to complete that action.
+
+```text
+1. Open the configuration file.
+2. Add the API key.
+3. Save the file.
+4. Restart the development server.
+```
+
+Do not hide required actions inside explanatory paragraphs.
+
+When a procedure has prerequisites, identify them before the first step.
+
+## Links
+
+Link text should describe its destination.
+
+Prefer:
+
+> Review the [authentication requirements](#).
+
+Avoid:
+
+> To review the authentication requirements, [click here](#).
+
+Descriptive links improve scanning, accessibility, and the usefulness of content when links are encountered outside their surrounding sentence.
+
+Avoid exposing raw URLs unless the URL itself is information the reader needs.
+
+## Code examples
+
+Code examples should be:
+
+- valid
+- minimal
+- relevant to the surrounding task
+- consistent with the documented API or interface
+- easy to copy and adapt
+
+Do not include unrelated implementation details simply to make an example appear realistic.
+
+Explain important behavior outside the code block rather than relying exclusively on comments inside the example.
+
+```ts
+const response = await fetch("/api/example", {
+  method: "GET",
+});
+
+if (!response.ok) {
+  throw new Error("Request failed");
+}
+```
+
+Examples that represent executable behavior should eventually be validated automatically where practical.
+
+## API documentation
+
+API documentation should help developers understand both **what an interface accepts** and **how to use it successfully**.
+
+Reference documentation should clearly define:
+
+- endpoint purpose
+- HTTP method and path
+- authentication requirements
+- request parameters
+- request body
+- response schema
+- status codes
+- error behavior
+
+Reference alone is not sufficient.
+
+Task-oriented guides should demonstrate how API operations work together to accomplish common developer goals.
+
+### Request and response examples
+
+Examples should reflect the documented schema and avoid fields that distract from the behavior being demonstrated.
+
+When an example intentionally omits fields, the surrounding documentation should make that clear.
+
+### Errors
+
+Document errors as part of the interface rather than as exceptional information.
+
+For each meaningful error condition, explain:
+
+1. what happened
+2. why it happened
+3. how the developer can resolve it
+
+Good documentation does not merely describe the successful path.
+
+---
+
+Standards create consistency. Automation helps preserve it.
