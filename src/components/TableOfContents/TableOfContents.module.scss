@@ -1,0 +1,25 @@
+@use "../../styles/variables" as *;
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  a {
+    color: $color-secondary;
+    font-size: 14px;
+
+    &:hover {
+      color: $color-text;
+      opacity: 1;
+    }
+  }
+}
+
+@media (max-width: $mobile) {
+  .navigation {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+  }
+}

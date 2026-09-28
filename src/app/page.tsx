@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <main>
@@ -36,7 +38,7 @@ export default function Home() {
                 Build and maintain documentation using the same tools and
                 workflows used to build software.
               </p>
-              <a href="/docs-as-code">Explore →</a>
+              <Link href="/docs-as-code">Explore →</Link>
             </article>
 
             <article>
@@ -45,7 +47,7 @@ export default function Home() {
                 Create repeatable workflows for intake, review, publishing,
                 maintenance, and governance.
               </p>
-              <a href="/operations">Explore →</a>
+              <Link href="/operations">Explore →</Link>
             </article>
 
             <article>
@@ -54,7 +56,7 @@ export default function Home() {
                 Establish the conventions that make documentation consistent,
                 usable, and scalable.
               </p>
-              <a href="/standards">Explore →</a>
+              <Link href="/standards">Explore →</Link>
             </article>
           </div>
         </div>

@@ -20,22 +20,6 @@
     font-size: 14px;
     font-weight: 600;
   }
-
-  nav {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  a {
-    color: $color-secondary;
-    font-size: 14px;
-
-    &:hover {
-      color: $color-text;
-      opacity: 1;
-    }
-  }
 }
 
 .content {
@@ -55,6 +39,7 @@
     font-size: 32px;
     line-height: 1.15;
     letter-spacing: -0.035em;
+    scroll-margin-top: 90px;
   }
 
   h3 {
@@ -151,12 +136,6 @@
 
   .sidebar {
     position: static;
-
-    nav {
-      flex-direction: row;
-      flex-wrap: wrap;
-      gap: 10px 20px;
-    }
   }
 
   .content {
