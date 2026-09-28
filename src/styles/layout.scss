@@ -210,6 +210,30 @@
 
 // Health
 
+.health-badge {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: 8px;
+  margin: 32px auto 0;
+  padding: 8px 14px;
+  border: 1px solid $color-border;
+  border-radius: 999px;
+  color: $color-text;
+  font-size: 14px;
+
+  &:hover {
+    border-color: $color-secondary;
+  }
+}
+
+.health-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #34c759;
+}
+
 .health-feature {
   padding: 150px 0 170px;
   background: $color-surface;

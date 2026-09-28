@@ -14,6 +14,12 @@ export default function Home() {
             documentation as code.
           </p>
 
+          <Link className="health-badge" href="/health">
+            <span className="health-badge-dot" aria-hidden="true" />
+            Documentation health: 100 · Healthy
+            <span aria-hidden="true">→</span>
+          </Link>
+
           <a className="hero-link" href="#explore">
             Explore DocOps <span aria-hidden="true">→</span>
           </a>
