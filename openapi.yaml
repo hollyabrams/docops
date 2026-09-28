@@ -42,6 +42,7 @@ components:
           minimum: 0
           maximum: 100
           example: 100
+
         status:
           type: string
           enum:
@@ -49,6 +50,7 @@ components:
             - needs-attention
             - unhealthy
           example: healthy
+
         checks:
           type: array
           items:

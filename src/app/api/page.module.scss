@@ -1,0 +1,35 @@
+@use "../../styles/variables" as *;
+
+.responseSchema {
+  margin: 28px 0 40px;
+  border-top: 1px solid $color-border;
+}
+
+.responseProperty {
+  padding: 22px 0;
+  border-bottom: 1px solid $color-border;
+
+  > div {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  code {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  span {
+    color: $color-secondary;
+    font-size: 13px;
+  }
+
+  p {
+    margin: 0;
+    color: $color-secondary;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+}

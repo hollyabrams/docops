@@ -24,6 +24,7 @@ export default function Header() {
           <Link href="/operations">Operations</Link>
           <Link href="/governance">Governance</Link>
           <Link href="/developer-docs">Developer Docs</Link>
+          <Link href="/api">API</Link>
           <Link href="/blog">Blog</Link>
         </nav>
 
@@ -59,6 +60,9 @@ export default function Header() {
         </Link>
         <Link href="/developer-docs" onClick={closeMenu}>
           Developer Docs
+        </Link>
+        <Link href="/api" onClick={closeMenu}>
+          API
         </Link>
         <Link href="/blog" onClick={closeMenu}>
           Blog
