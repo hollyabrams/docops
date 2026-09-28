@@ -1,0 +1,170 @@
+import CodeExample from "@/components/CodeExample/CodeExample";
+import { publishedReleaseNotesExample } from "@/components/CodeExample/examples";
+
+<p className="eyebrow">Developer Docs</p>
+
+# Developer documentation is part of the product.
+
+Developer documentation connects technical capability with successful implementation. It should help developers understand what a product does, get started quickly, make informed implementation decisions, and recover when something goes wrong.
+
+## Overview
+
+Developer documentation is more than API reference.
+
+A complete developer experience may include:
+
+- getting started guides
+- conceptual documentation
+- tutorials and implementation guides
+- API and SDK documentation
+- code examples
+- authentication guidance
+- error and troubleshooting documentation
+- release and migration information
+
+These resources serve different purposes but should work as one documentation system.
+
+The goal is not simply to document functionality. The goal is to reduce the effort required to successfully use it.
+
+## Audience
+
+Developer documentation should begin with an understanding of who is building with the product.
+
+Different audiences may need different levels of context.
+
+A developer evaluating a product needs to understand what is possible. A developer implementing it needs precise technical instructions. A developer troubleshooting an integration needs to identify what failed and how to recover.
+
+Useful audience questions include:
+
+- What is the developer trying to accomplish?
+- What technical knowledge can be assumed?
+- What information is required before implementation begins?
+- What decisions must the developer make?
+- What problems are likely to occur?
+
+Documentation structure should reflect those needs rather than the internal structure of the organization that created the product.
+
+## Getting started
+
+A getting started experience should establish a successful path through the product with as little friction as possible.
+
+The path should answer:
+
+1. What is being built?
+2. What is required before starting?
+3. How is the environment configured?
+4. What is the smallest useful implementation?
+5. What should happen when it works?
+6. Where should the developer go next?
+
+A getting started guide should demonstrate success, not attempt to explain the entire product.
+
+Detailed concepts and configuration options can be introduced after the developer has completed the first working implementation.
+
+## Concepts
+
+Conceptual documentation explains the system developers are working with.
+
+Strong concept documentation describes relationships, behavior, constraints, and terminology that cannot be communicated effectively through endpoint reference alone.
+
+For example, an API reference can describe a `status` property and its allowed values.
+
+Concept documentation should explain:
+
+- what causes the status to change
+- what each state means
+- which transitions are possible
+- how the state affects other operations
+- what the developer should do in each state
+
+Reference describes the interface. Concepts explain how the system behaves.
+
+## Code examples
+
+Code examples should demonstrate realistic implementation patterns rather than isolated syntax.
+
+A useful example is:
+
+- complete enough to understand
+- focused on one task
+- technically valid
+- consistent with the documented interface
+- easy to copy and adapt
+- maintained with the product
+
+For example:
+
+<CodeExample
+  title="Filter published release notes"
+  language="TypeScript"
+  code={publishedReleaseNotesExample}
+/>
+
+The example demonstrates more than syntax. TypeScript defines the expected structure of a release note and limits status to known values, making documentation data easier to validate and work with programmatically.
+
+Examples should be treated as maintained documentation assets rather than decorative additions to a page.
+
+## Troubleshooting
+
+Developer documentation should account for failure paths as deliberately as successful ones.
+
+Troubleshooting content should help developers move from a symptom to a resolution.
+
+Useful troubleshooting information includes:
+
+<table>
+  <thead>
+    <tr>
+      <th>Information</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Symptom</td>
+      <td>Helps developers identify whether the issue matches their experience.</td>
+    </tr>
+    <tr>
+      <td>Cause</td>
+      <td>Explains why the behavior occurs.</td>
+    </tr>
+    <tr>
+      <td>Resolution</td>
+      <td>Provides the steps required to correct the problem.</td>
+    </tr>
+    <tr>
+      <td>Expected result</td>
+      <td>Confirms that the resolution worked.</td>
+    </tr>
+    <tr>
+      <td>Related information</td>
+      <td>Connects the issue to relevant concepts or reference documentation.</td>
+    </tr>
+  </tbody>
+</table>
+
+Error messages should also provide enough information to support troubleshooting. When possible, documentation should preserve the terminology developers encounter in the product, logs, API responses, and development tools.
+
+## Maintenance
+
+Developer documentation changes with the product.
+
+Documentation maintenance should be connected to the engineering lifecycle rather than handled only through periodic cleanup.
+
+Changes that may require documentation include:
+
+- new features and capabilities
+- API or SDK changes
+- configuration changes
+- new errors or failure modes
+- deprecations
+- breaking changes
+- security requirements
+- implementation patterns that emerge through support
+
+Documentation ownership, repository history, metadata, automated validation, and product release processes can all help identify content that requires attention.
+
+This is where developer documentation connects back to DocOps.
+
+Documentation becomes easier to trust when its maintenance is part of the same system used to build and change the product.
+ 
