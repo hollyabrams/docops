@@ -112,6 +112,34 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <section className="health-feature">
+        <div className="container">
+          <p className="section-label">Documentation health</p>
+
+          <h2>Know when your documentation needs attention.</h2>
+
+          <p className="section-intro">
+            DocOps evaluates repository and content signals to surface
+            documentation issues before they become maintenance problems.
+          </p>
+
+          <div className="health-feature-summary">
+            <div>
+              <p className="health-feature-number">100</p>
+              <p className="health-feature-status">Healthy</p>
+            </div>
+
+            <div className="health-feature-action">
+              <p>6 automated checks</p>
+
+              <Link href="/health">
+                View documentation health <span aria-hidden="true">→</span>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

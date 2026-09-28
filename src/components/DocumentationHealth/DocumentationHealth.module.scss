@@ -1,0 +1,85 @@
+@use "../../styles/variables" as *;
+
+.health {
+  margin-top: 56px;
+  margin-bottom: 64px;
+}
+
+.summary {
+  padding-bottom: 48px;
+  border-bottom: 1px solid $color-border;
+}
+
+.score {
+  margin: 0;
+  color: $color-text;
+  font-size: clamp(72px, 10vw, 112px);
+  font-weight: 600;
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+}
+
+.status {
+  margin: 16px 0 0;
+  color: $color-secondary;
+  font-size: 18px;
+}
+
+.checks {
+  margin-top: 8px;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 24px 0;
+  border-bottom: 1px solid $color-border;
+}
+
+.checkName {
+  margin: 0 0 6px;
+  color: $color-text;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.message {
+  margin: 0;
+  color: $color-secondary;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.checkStatus {
+  flex-shrink: 0;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.passing {
+  color: $color-text;
+}
+
+.warning,
+.failing,
+.unavailable {
+  color: $color-secondary;
+}
+
+@media (max-width: $mobile) {
+  .health {
+    margin-top: 40px;
+  }
+
+  .summary {
+    padding-bottom: 36px;
+  }
+
+  .check {
+    align-items: flex-start;
+    gap: 20px;
+  }
+}

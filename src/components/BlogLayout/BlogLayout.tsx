@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { blogPosts } from "@/data/blogPosts";
+import { blogPosts } from "@/data/blog/blogPosts";
 import styles from "./BlogLayout.module.scss";
 
 type BlogLayoutProps = {
