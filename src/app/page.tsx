@@ -137,7 +137,7 @@ export default function Home() {
             </div>
 
             <div className="health-feature-action">
-              <p>6 automated checks</p>
+              <p>7 automated checks</p>
 
               <Link href="/health">
                 View documentation health <span aria-hidden="true">→</span>

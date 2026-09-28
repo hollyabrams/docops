@@ -33,6 +33,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Lint
+        run: npm run lint
+
+      - name: Validate OpenAPI
+        run: npm run validate:openapi
+
       - name: Build DocOps
         run: npm run build
 

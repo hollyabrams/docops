@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "validate:openapi": "redocly lint openapi.yaml"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
@@ -19,6 +20,7 @@
     "sass": "^1.105.0"
   },
   "devDependencies": {
+    "@redocly/cli": "^2.55.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

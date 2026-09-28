@@ -1,0 +1,81 @@
+openapi: 3.1.0
+
+info:
+  title: DocOps API
+  version: 1.0.0
+  description: >
+    API contract for accessing DocOps documentation and documentation
+    health data.
+  license:
+    name: MIT
+    identifier: MIT
+
+security: []
+
+paths:
+  /health:
+    get:
+      operationId: getDocumentationHealth
+      summary: Get documentation health
+      description: >
+        Returns the current health of the documentation system and the
+        individual checks used to calculate the overall score.
+      responses:
+        "200":
+          description: Documentation health returned successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DocumentationHealth"
+
+components:
+  schemas:
+    DocumentationHealth:
+      type: object
+      required:
+        - score
+        - status
+        - checks
+      properties:
+        score:
+          type: integer
+          minimum: 0
+          maximum: 100
+          example: 100
+        status:
+          type: string
+          enum:
+            - healthy
+            - needs-attention
+            - unhealthy
+          example: healthy
+        checks:
+          type: array
+          items:
+            $ref: "#/components/schemas/HealthCheck"
+
+    HealthCheck:
+      type: object
+      required:
+        - id
+        - name
+        - status
+        - message
+      properties:
+        id:
+          type: string
+          example: internal-routes
+        name:
+          type: string
+          example: Internal routes
+        status:
+          type: string
+          enum:
+            - passing
+            - warning
+            - failing
+            - unavailable
+          example: passing
+        message:
+          type: string
+          example: 7 internal routes checked. No broken routes found.

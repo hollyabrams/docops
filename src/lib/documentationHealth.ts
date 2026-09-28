@@ -281,6 +281,36 @@ function calculateScore(checks: HealthCheck[]): number {
   return Math.round((points / checks.length) * 100);
 }
 
+function checkOpenApiSpecification(): HealthCheck {
+  const specificationPath = path.join(process.cwd(), "openapi.yaml");
+
+  if (!fs.existsSync(specificationPath)) {
+    return {
+      id: "openapi-specification",
+      name: "OpenAPI specification",
+      status: "failing",
+      message: "OpenAPI specification not found.",
+    };
+  }
+
+  const content = fs.readFileSync(specificationPath, "utf8");
+
+  const hasOpenApiVersion = /^openapi:\s*3\.\d+\.\d+/m.test(content);
+  const hasInfo = /^info:/m.test(content);
+  const hasPaths = /^paths:/m.test(content);
+
+  const isValidStructure = hasOpenApiVersion && hasInfo && hasPaths;
+
+  return {
+    id: "openapi-specification",
+    name: "OpenAPI specification",
+    status: isValidStructure ? "passing" : "failing",
+    message: isValidStructure
+      ? "OpenAPI contract found with required top-level structure."
+      : "OpenAPI contract is missing required top-level structure.",
+  };
+}
+
 export function getDocumentationHealth(): DocumentationHealth {
   const checks: HealthCheck[] = [
     {
@@ -294,6 +324,7 @@ export function getDocumentationHealth(): DocumentationHealth {
     checkEmptySections(),
     checkInternalRoutes(),
     checkExternalLinks(),
+    checkOpenApiSpecification(),
   ];
 
   const score = calculateScore(checks);
