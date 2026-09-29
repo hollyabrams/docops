@@ -1,0 +1,140 @@
+<p className="eyebrow">AI</p>
+
+# Documentation in the age of AI
+
+AI is changing how technical documentation is created, maintained, discovered,
+and consumed. It can draft content, summarize changes, generate examples, and
+help users find answers without ever visiting a documentation site.
+
+That does not make documentation architecture less important. It makes it more
+important.
+
+AI systems are only as useful as the information available to them.
+Documentation still needs authoritative sources, predictable structure, clear
+terminology, reliable examples, and mechanisms for detecting when information
+becomes stale or inconsistent.
+
+DocOps approaches AI from both sides of that relationship: preparing
+documentation for AI consumption and using AI responsibly within documentation
+workflows.
+
+## Documentation for AI
+
+AI-ready documentation starts with good documentation.
+
+Clear headings, focused sections, consistent terminology, descriptive links,
+stable URLs, and predictable information architecture help people navigate
+documentation. Those same characteristics also make technical information
+easier for machines to retrieve and interpret.
+
+AI readiness should therefore be treated as part of documentation architecture,
+not as a separate publishing task.
+
+DocOps uses several mechanisms to make documentation more discoverable and
+machine-readable:
+
+- The [`sitemap`](/sitemap.xml) provides a structured inventory of published
+  content.
+- [`robots.txt`](/robots.txt) communicates crawler access rules and identifies
+  the sitemap.
+- [`llms.txt`](/llms.txt) provides an AI-oriented index to important DocOps
+  documentation and technical resources.
+- OpenAPI provides a machine-readable contract for API behavior.
+- Structured documentation data separates reusable technical information from
+  its presentation.
+
+These mechanisms improve access to information, but none of them guarantees
+that an AI system will crawl, index, retrieve, or prioritize particular
+content.
+
+## AI-ready content
+
+Making documentation available to AI is different from making it useful to AI.
+
+A perfectly configured crawler can still retrieve incomplete, contradictory,
+or poorly structured information. AI readiness depends on the quality of the
+underlying documentation.
+
+DocOps emphasizes content that is:
+
+- Structured with meaningful headings and focused sections.
+- Written with consistent terminology.
+- Explicit about requirements, constraints, and expected behavior.
+- Connected to authoritative technical sources where possible.
+- Designed so important information does not depend entirely on visual context.
+- Maintained through repeatable standards and governance.
+
+The goal is not to write documentation for machines instead of people. It is
+to create documentation that communicates clearly to both.
+
+## AI-assisted documentation
+
+AI can also participate in the documentation workflow.
+
+Content generation is one useful capability, but documentation operations
+extend beyond drafting. AI can help analyze changes, identify potentially
+affected documentation, summarize technical information, propose updates, and
+prepare release-note candidates.
+
+A future DocOps workflow might use an API contract change to identify
+documentation that could require review:
+
+```text
+OpenAPI change
+      ↓
+AI analyzes the change
+      ↓
+Potentially affected documentation identified
+      ↓
+Documentation updates proposed
+      ↓
+Human review
+      ↓
+Automated validation
+      ↓
+Publish
+```
+
+This keeps AI inside an engineering workflow rather than treating generated
+content as automatically publishable.
+
+## Validation still matters
+
+Not every documentation problem needs AI.
+
+Deterministic tools are better suited to questions with deterministic answers.
+DocOps uses automated checks for structural requirements, internal routes,
+external links, OpenAPI structure, and AI discovery resources. The
+[Documentation Health](/health) system brings those checks together to provide
+a measurable view of documentation quality.
+
+AI discoverability is validated rather than assumed. DocOps checks that its
+sitemap configuration, crawler rules, and AI discovery resources are present
+and correctly configured.
+
+AI becomes more useful when the problem requires interpretation: determining
+what documentation may be affected by a change, comparing related concepts,
+summarizing technical changes, or proposing new content.
+
+The distinction is intentional:
+
+**Use AI where interpretation provides leverage. Use deterministic tooling
+where correctness can be tested.**
+
+Generated or AI-assisted documentation should still pass the same standards,
+validation, review, and CI processes as human-authored content.
+
+## The role of the documentation engineer
+
+As AI takes on more content-generation work, documentation engineering expands
+the focus beyond producing individual pages.
+
+Information architecture, source-of-truth strategy, automation, validation,
+developer experience, governance, and content lifecycle management determine
+whether documentation remains trustworthy as a system.
+
+AI can generate words.
+
+Documentation engineering determines whether those words belong, whether they
+are reliable, how they connect to the rest of the system, and how they remain
+correct over time.

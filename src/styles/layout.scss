@@ -210,6 +210,33 @@
 
 // Health
 
+.health-page {
+  padding: 80px 0 140px;
+
+  > section {
+    max-width: 1120px;
+  }
+
+  .eyebrow {
+    margin-bottom: 18px;
+  }
+
+  h1 {
+    max-width: 820px;
+    margin-bottom: 28px;
+    font-size: clamp(48px, 6vw, 72px);
+    line-height: 1.02;
+    letter-spacing: -0.05em;
+  }
+
+  > section > p:not(.eyebrow) {
+    max-width: 820px;
+    color: $color-secondary;
+    font-size: 17px;
+    line-height: 1.7;
+  }
+}
+
 .health-badge {
   display: flex;
   width: fit-content;
@@ -300,6 +327,10 @@
 }
 
 @media (max-width: $mobile) {
+  .health-page {
+    padding: 48px 0 90px;
+  }
+  
   .health-feature {
     padding: 90px 0;
 

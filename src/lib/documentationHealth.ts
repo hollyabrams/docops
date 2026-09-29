@@ -178,9 +178,19 @@ function checkInternalRoutes(): HealthCheck {
 
     const route = link.replace(/^\/|\/$/g, "");
 
-    return !supportedExtensions.some((extension) =>
+    const pageExists = supportedExtensions.some((extension) =>
       fs.existsSync(path.join(appDirectory, route, `page${extension}`))
     );
+
+    const publicResourceExists = fs.existsSync(
+      path.join(process.cwd(), "public", route)
+    );
+
+    const generatedResourceExists = fs.existsSync(
+      path.join(appDirectory, route.replace(/\.xml$/, ".ts"))
+    );
+
+    return !pageExists && !publicResourceExists && !generatedResourceExists;
   });
 
   return {
@@ -311,6 +321,69 @@ function checkOpenApiSpecification(): HealthCheck {
   };
 }
 
+function checkAiDiscoverability(): HealthCheck {
+  const sitemapPath = path.join(
+    process.cwd(),
+    "src",
+    "app",
+    "sitemap.ts"
+  );
+  const robotsPath = path.join(process.cwd(), "public", "robots.txt");
+  const llmsPath = path.join(process.cwd(), "public", "llms.txt");
+
+  const missingResources: string[] = [];
+
+  if (!fs.existsSync(sitemapPath)) {
+    missingResources.push("sitemap");
+  }
+
+  if (!fs.existsSync(robotsPath)) {
+    missingResources.push("robots.txt");
+  }
+
+  if (!fs.existsSync(llmsPath)) {
+    missingResources.push("llms.txt");
+  }
+
+  if (missingResources.length > 0) {
+    return {
+      id: "ai-discoverability",
+      name: "AI discoverability",
+      status: "failing",
+      message: `Missing AI discovery resources: ${missingResources.join(", ")}.`,
+    };
+  }
+
+  const robotsContent = fs.readFileSync(robotsPath, "utf8");
+  const llmsContent = fs.readFileSync(llmsPath, "utf8");
+
+  const robotsReferencesSitemap =
+    robotsContent.includes("Sitemap:") &&
+    robotsContent.includes("/docops/sitemap.xml");
+
+  const llmsIdentifiesDocOps = /^# DocOps$/m.test(llmsContent);
+
+  const llmsIncludesDocumentation =
+    llmsContent.includes("/docops/docs-as-code") &&
+    llmsContent.includes("/docops/developer-docs") &&
+    llmsContent.includes("/docops/api") &&
+    llmsContent.includes("/docops/ai");
+
+  const resourcesAreValid =
+    robotsReferencesSitemap &&
+    llmsIdentifiesDocOps &&
+    llmsIncludesDocumentation;
+
+  return {
+    id: "ai-discoverability",
+    name: "AI discoverability",
+    status: resourcesAreValid ? "passing" : "failing",
+    message: resourcesAreValid
+      ? "Sitemap, crawler rules, and AI discovery resources are configured."
+      : "AI discovery resources are incomplete or incorrectly configured.",
+  };
+}
+
 export function getDocumentationHealth(): DocumentationHealth {
   const checks: HealthCheck[] = [
     {
@@ -325,6 +398,7 @@ export function getDocumentationHealth(): DocumentationHealth {
     checkInternalRoutes(),
     checkExternalLinks(),
     checkOpenApiSpecification(),
+    checkAiDiscoverability(),
   ];
 
   const score = calculateScore(checks);

@@ -1,0 +1,28 @@
+# DocOps
+
+> DocOps is a documentation engineering web application that demonstrates
+> docs-as-code architecture, documentation governance, automated documentation
+> health checks, API documentation, OpenAPI validation, and CI/CD.
+
+DocOps explores how documentation can be designed, operated, validated, and
+maintained as an engineering system. The project also demonstrates approaches
+for making technical documentation useful to both people and AI systems.
+
+## Documentation
+
+- [Docs as Code](https://hollyabrams.github.io/docops/docs-as-code): Documentation architecture, source control, review, and publishing workflows.
+- [Standards](https://hollyabrams.github.io/docops/standards): Documentation standards and conventions used across DocOps.
+- [Operations](https://hollyabrams.github.io/docops/operations): Processes for maintaining documentation over time.
+- [Governance](https://hollyabrams.github.io/docops/governance): Ownership, review, standards, and documentation lifecycle practices.
+- [Developer Docs](https://hollyabrams.github.io/docops/developer-docs): Practices for API documentation, code examples, and developer-facing technical content.
+- [AI](https://hollyabrams.github.io/docops/ai): Approaches to AI-ready documentation, AI discoverability, and AI-assisted documentation workflows.
+
+## Technical resources
+
+- [API Reference](https://hollyabrams.github.io/docops/api): API contract, request and response documentation, and examples.
+- [Documentation Health](https://hollyabrams.github.io/docops/health): Automated checks that evaluate the health of the documentation system.
+
+## Additional resources
+
+- [Blog](https://hollyabrams.github.io/docops/blog): Articles about documentation engineering and the development of DocOps.
+- [Sitemap](https://hollyabrams.github.io/docops/sitemap.xml): Inventory of published DocOps pages.

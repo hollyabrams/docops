@@ -12,8 +12,14 @@ export default function HealthPage() {
         <h1>Know when your documentation needs attention.</h1>
 
         <p>
-          Documentation health combines automated checks and repository
-          signals to identify content that may need review.
+          Documentation Health runs automated checks against the DocOps repository to identify content and configuration that may need attention.
+        </p>
+
+        <p>
+          <strong>Generated from the repository at build time,</strong> these
+          results are calculated from DocOps source files, routes,
+          configuration, and documentation resources. Statuses are not
+          manually assigned.
         </p>
 
         <DocumentationHealth health={health} />
