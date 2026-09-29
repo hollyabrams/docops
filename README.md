@@ -2,11 +2,14 @@
 
 **Documentation engineered.**
 
-A practical approach to building, operating, and scaling documentation as code.
+A documentation engineering application for building, operating, validating,
+and maintaining documentation as code.
 
-**[View DocOps live →](https://hollyabrams.github.io/docops/)**
+[View DocOps live →](https://hollyabrams.github.io/docops/)
 
-DocOps is an open-source demonstration of documentation engineering in practice—a working environment for exploring how documentation can be built, operated, tested, governed, and maintained like software.
+DocOps is an open-source demonstration of documentation engineering in
+practice. It explores what happens when documentation is treated as an
+engineered system rather than simply a collection of pages.
 
 ![DocOps homepage](docs/assets/docops-home.png)
 
@@ -14,26 +17,62 @@ DocOps is an open-source demonstration of documentation engineering in practice�
 
 Documentation is more than content.
 
-Modern documentation teams work with source control, automated validation, structured content, APIs, CI/CD pipelines, governance models, and measurable quality standards.
+Modern documentation systems depend on source control, structured content,
+APIs, automated validation, CI/CD, governance, and processes that keep
+information reliable as products change.
 
-DocOps demonstrates those practices in a working Next.js application rather than simply describing them.
+DocOps brings those practices together in a working Next.js application.
 
-The project explores the complete documentation lifecycle:
+The project follows the documentation lifecycle:
 
 **Intake → Draft → Review → Validate → Publish → Maintain**
 
 ## What DocOps demonstrates
 
-- Docs-as-code workflows
-- Documentation standards and style guidance
-- Documentation operations and governance
+- Docs-as-code architecture and workflows
+- Documentation standards and governance
+- Documentation operations and lifecycle management
 - API documentation and OpenAPI
-- Content lifecycle management
-- Automated documentation validation
-- Documentation health checks
+- Automated documentation health checks
+- Structural, route, link, and configuration validation
+- OpenAPI validation in CI
 - CI/CD for documentation
 - Developer documentation
+- AI-ready documentation and discovery resources
 - Documentation engineering practices
+
+## Documentation Health
+
+DocOps includes an automated Documentation Health system that evaluates the
+repository at build time.
+
+Health checks inspect documentation structure, section content, internal
+routes, external URLs, OpenAPI structure, and AI discovery resources. Results
+are combined into an overall documentation health score.
+
+The checks are designed to fail when documentation or configuration no longer
+meets expected requirements, making documentation quality observable rather
+than assumed.
+
+## API and OpenAPI
+
+DocOps includes an API reference backed by an OpenAPI 3.1 contract.
+
+The OpenAPI specification is validated with Redocly as part of the CI pipeline,
+demonstrating how an API contract can participate in documentation validation
+and publishing workflows.
+
+## AI-ready documentation
+
+DocOps explores documentation for both human and machine consumption.
+
+The project includes structured documentation, a generated sitemap, crawler
+configuration, and an `llms.txt` resource. Documentation Health validates that
+these discovery resources are present and correctly configured.
+
+AI-assisted documentation workflows are an area of continued development, with
+human review and deterministic validation remaining part of the documentation
+lifecycle.
 
 ## Technology
 
@@ -44,10 +83,10 @@ DocOps is built with:
 - TypeScript
 - SCSS
 - MDX
-- OpenAPI
+- OpenAPI 3.1
+- Redocly CLI
 - GitHub Actions
-
-Additional documentation tooling and automated validation will be added as the project evolves.
+- GitHub Pages
 
 ## Local development
 
@@ -63,23 +102,39 @@ Start the development server:
 just run
 ```
 
-Or:
+Open:
 
 ```bash
-npm run dev
+http://localhost:3000
 ```
 
-Open `http://localhost:3000`.
+## Validation
+
+Run the project checks locally:
+
+```bash
+npm run lint
+npm run validate:openapi
+npm run build
+```
+
+The GitHub Actions workflow runs these checks before deploying DocOps to
+GitHub Pages.
 
 ## Project status
 
 DocOps is actively being developed.
+Current functionality includes documentation architecture, governance and
+standards, automated Documentation Health, API documentation, an OpenAPI
+contract, CI/CD, and AI discovery resources.
 
-The initial release establishes the application shell, visual system, documentation architecture, and documentation lifecycle model. Future iterations will add working documentation content, API examples, automated validation, documentation health metrics, and CI/CD workflows.
+Planned work includes additional API endpoints, Python SDK examples,
+release-note and changelog workflows, deeper documentation health checks, and
+AI-assisted documentation operations.
 
 ## Author
 
-Designed and engineered by **Holly Abrams**.
+Designed and engineered by Holly Abrams.
 
 - [Portfolio](https://hollyabrams.github.io/portfolio/)
 - [LinkedIn](https://www.linkedin.com/in/hollyabrams/)
