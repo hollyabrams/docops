@@ -1,0 +1,214 @@
+@use "../../styles/variables" as *;
+
+.apiRequest {
+  margin: 28px 0 40px;
+  border: 1px solid $color-border;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.requestBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 14px 16px;
+  border-bottom: 1px solid $color-border;
+}
+
+.request {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  code {
+    color: $color-text;
+    font-size: 14px;
+  }
+}
+
+.method {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  padding: 4px 8px;
+  border: 1px solid $color-border;
+  border-radius: 5px;
+  color: $color-text;
+  font-family: monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.sendButton {
+  padding: 8px 14px;
+  border: 1px solid $color-text;
+  border-radius: 6px;
+  background: $color-text;
+  color: $color-background;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+
+  &:hover:not(:disabled) {
+    opacity: 0.8;
+  }
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.5;
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.resetButton {
+  padding: 8px 14px;
+  border: 1px solid $color-border;
+  border-radius: 6px;
+  background: transparent;
+  color: $color-text;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    opacity 0.2s ease;
+
+  &:hover {
+    border-color: $color-secondary;
+  }
+}
+
+.response {
+  padding: 16px;
+}
+
+.responseHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.responseLabel {
+  margin: 0;
+  color: $color-secondary;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  font-size: 13px;
+}
+
+.statusDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #34c759;
+}
+
+.responseBody {
+  margin: 0;
+  padding: 16px;
+  overflow-x: auto;
+  border: 1px solid $color-border;
+  border-radius: 6px;
+
+  code {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+}
+
+.error {
+  margin: 0;
+  color: $color-secondary;
+  font-size: 14px;
+}
+
+.curlRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 16px;
+  border-bottom: 1px solid $color-border;
+}
+
+.curlLabel {
+  flex-shrink: 0;
+  color: $color-secondary;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.curlCommand {
+  min-width: 0;
+  flex: 1;
+  overflow-x: auto;
+  color: $color-text;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.copyButton {
+  flex-shrink: 0;
+  padding: 6px 10px;
+  border: 0;
+  background: transparent;
+  color: $color-secondary;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+
+  &:hover:not(:disabled) {
+    color: $color-text;
+  }
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: 640px) {
+  .requestBar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .sendButton {
+    width: 100%;
+  }
+  .actions {
+  width: 100%;
+    }
+  .resetButton,
+  .sendButton {
+    flex: 1;
+  }
+  .curlRow {
+  align-items: flex-start;
+  flex-wrap: wrap;
+  }
+  .curlCommand {
+  order: 3;
+  width: 100%;
+  flex-basis: 100%;
+  }
+}

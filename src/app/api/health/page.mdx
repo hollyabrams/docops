@@ -1,7 +1,7 @@
 import Endpoint from "@/components/Endpoint/Endpoint";
-import CodeExample from "@/components/CodeExample/CodeExample";
 import { healthResponseParameters } from "@/data/api/health";
 import styles from "./page.module.scss";
+import ApiRequest from "@/components/ApiRequest/ApiRequest";
 
 <p className="eyebrow">API Reference</p>
 
@@ -13,18 +13,20 @@ Access documentation system health information and the individual checks used to
 
 <a href="#get-health" className={styles.endpointLink}>
   <span className={styles.method}>GET</span>
-  <code>/health</code>
+  <code>/api/v1/health</code>
 </a>
 
-<h2 id="get-health">Get documentation health</h2>
+<h2 id="get-health">Documentation health</h2>
 
 Returns the current health of the documentation system and the individual checks used to calculate the overall score.
 
 ### Request
 
-<Endpoint method="GET" path="/health" />
+<Endpoint method="GET" path="/api/v1/health" />
 
 This operation does not require authentication or parameters.
+
+<ApiRequest method="GET" path="/api/v1/health" />
 
 ### Response
 
@@ -42,26 +44,3 @@ A successful request returns a `200` response with a JSON object containing the 
     </div>
   ))}
 </div>
-
-<CodeExample
-  title="200 response"
-  language="JSON"
-  code={`{
-  "score": 100,
-  "status": "healthy",
-  "checks": [
-    {
-      "id": "internal-routes",
-      "name": "Internal routes",
-      "status": "passing",
-      "message": "7 internal routes checked. No broken routes found."
-    },
-    {
-      "id": "openapi-specification",
-      "name": "OpenAPI specification",
-      "status": "passing",
-      "message": "OpenAPI contract found with required top-level structure."
-    }
-  ]
-}`}
-/>
