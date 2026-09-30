@@ -5,17 +5,28 @@ import styles from "./page.module.scss";
 
 <p className="eyebrow">API Reference</p>
 
-# Get documentation health
+# Health
+
+Access documentation system health information and the individual checks used to calculate the overall score.
+
+## Endpoints
+
+<a href="#get-health" className={styles.endpointLink}>
+  <span className={styles.method}>GET</span>
+  <code>/health</code>
+</a>
+
+<h2 id="get-health">Get documentation health</h2>
 
 Returns the current health of the documentation system and the individual checks used to calculate the overall score.
 
-## Request
+### Request
 
 <Endpoint method="GET" path="/health" />
 
 This operation does not require authentication or parameters.
 
-## Response
+### Response
 
 A successful request returns a `200` response with a JSON object containing the overall score, status, and individual health checks.
 
@@ -54,4 +65,3 @@ A successful request returns a `200` response with a JSON object containing the 
   ]
 }`}
 />
-

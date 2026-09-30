@@ -9,7 +9,7 @@ export const apiPages: ApiPage[] = [
     href: "/api",
   },
   {
-    title: "Get documentation health",
-    href: "/api/get-documentation-health",
+    title: "Health",
+    href: "/api/health",
   },
 ];
