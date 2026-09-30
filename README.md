@@ -2,26 +2,24 @@
 
 **Documentation engineered.**
 
-A documentation engineering application for building, operating, validating,
+A documentation engineering application for building, validating, publishing,
 and maintaining documentation as code.
 
-[View DocOps live →](https://hollyabrams.github.io/docops/)
+[View DocOps live →](https://docops-gamma.vercel.app/)
 
-DocOps is an open-source demonstration of documentation engineering in
-practice. It explores what happens when documentation is treated as an
-engineered system rather than simply a collection of pages.
+DocOps is an open-source project that demonstrates documentation engineering
+in practice. It treats documentation as a system to build and maintain, not
+just a collection of pages.
 
 ![DocOps homepage](docs/assets/docops-home.png)
 
 ## About the project
 
-Documentation is more than content.
+Modern documentation depends on more than good writing. It also needs source
+control, structured content, APIs, automated checks, CI/CD, standards, and
+clear processes for keeping information accurate as products change.
 
-Modern documentation systems depend on source control, structured content,
-APIs, automated validation, CI/CD, governance, and processes that keep
-information reliable as products change.
-
-DocOps brings those practices together in a working Next.js application.
+DocOps brings those pieces together in a working Next.js application.
 
 The project follows the documentation lifecycle:
 
@@ -31,48 +29,49 @@ The project follows the documentation lifecycle:
 
 - Docs-as-code architecture and workflows
 - Documentation standards and governance
-- Documentation operations and lifecycle management
-- API documentation and OpenAPI
+- Documentation lifecycle management
+- API and developer documentation
+- OpenAPI 3.1
 - Automated documentation health checks
-- Structural, route, link, and configuration validation
-- OpenAPI validation in CI
+- Content, route, link, and configuration validation
 - CI/CD for documentation
-- Developer documentation
 - AI-ready documentation and discovery resources
-- Documentation engineering practices
 
 ## Documentation Health
 
-DocOps includes an automated Documentation Health system that evaluates the
-repository at build time.
+DocOps includes an automated Documentation Health system that checks the
+documentation and reports its current health.
 
-Health checks inspect documentation structure, section content, internal
-routes, external URLs, OpenAPI structure, and AI discovery resources. Results
-are combined into an overall documentation health score.
+Checks cover documentation structure, empty sections, internal routes,
+external URLs, the OpenAPI specification, and AI discovery resources. The
+results are combined into an overall health score.
 
-The checks are designed to fail when documentation or configuration no longer
-meets expected requirements, making documentation quality observable rather
-than assumed.
+The same health engine powers the Documentation Health dashboard and the
+DocOps API.
 
 ## API and OpenAPI
 
-DocOps includes an API reference backed by an OpenAPI 3.1 contract.
+DocOps includes a working API with a human-readable API reference backed by
+an OpenAPI 3.1 contract.
 
-The OpenAPI specification is validated with Redocly as part of the CI pipeline,
-demonstrating how an API contract can participate in documentation validation
-and publishing workflows.
+The `GET /api/v1/health` endpoint returns the current Documentation Health
+score and its individual checks.
+
+The API reference includes an interactive request console for sending a live
+request and viewing the JSON response. The OpenAPI specification is validated
+with Redocly as part of CI.
 
 ## AI-ready documentation
 
-DocOps explores documentation for both human and machine consumption.
+DocOps includes resources that make documentation easier for both people and
+machines to discover and use.
 
 The project includes structured documentation, a generated sitemap, crawler
-configuration, and an `llms.txt` resource. Documentation Health validates that
-these discovery resources are present and correctly configured.
+configuration, and an `llms.txt` resource. Documentation Health checks that
+these resources are present and configured.
 
-AI-assisted documentation workflows are an area of continued development, with
-human review and deterministic validation remaining part of the documentation
-lifecycle.
+AI-assisted documentation workflows are planned, with human review and
+automated validation remaining part of the process.
 
 ## Technology
 
@@ -86,7 +85,7 @@ DocOps is built with:
 - OpenAPI 3.1
 - Redocly CLI
 - GitHub Actions
-- GitHub Pages
+- Vercel
 
 ## Local development
 
@@ -104,7 +103,7 @@ just run
 
 Open:
 
-```bash
+```text
 http://localhost:3000
 ```
 
@@ -118,19 +117,29 @@ npm run validate:openapi
 npm run build
 ```
 
-The GitHub Actions workflow runs these checks before deploying DocOps to
-GitHub Pages.
+GitHub Actions runs the same checks on pushes to `main` and pull requests.
+
+## Deployment
+
+DocOps is deployed to Vercel and connected to the GitHub repository.
+
+GitHub Actions handles CI by running linting, OpenAPI validation, and a
+production build. Vercel automatically deploys changes from `main`.
+
+This keeps validation and deployment separate while supporting server-side
+features such as the DocOps API.
 
 ## Project status
 
 DocOps is actively being developed.
-Current functionality includes documentation architecture, governance and
-standards, automated Documentation Health, API documentation, an OpenAPI
-contract, CI/CD, and AI discovery resources.
 
-Planned work includes additional API endpoints, Python SDK examples,
-release-note and changelog workflows, deeper documentation health checks, and
-AI-assisted documentation operations.
+Current functionality includes documentation architecture and standards,
+Documentation Health, a working API and interactive API reference, OpenAPI
+validation, CI/CD, and AI discovery resources.
+
+Planned work includes additional API endpoints, a Python SDK, release-note and
+changelog workflows, deeper health checks, and AI-assisted documentation
+operations.
 
 ## Author
 
