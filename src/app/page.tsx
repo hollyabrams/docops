@@ -1,6 +1,14 @@
 import Link from "next/link";
 
+import { getDocumentationHealth } from "@/lib/documentationHealth";
+
 export default function Home() {
+  const health = getDocumentationHealth();
+  const healthStatus =
+    health.status === "needs-attention"
+      ? "Needs attention"
+      : health.status.charAt(0).toUpperCase() + health.status.slice(1);
+
   return (
     <main>
       <section className="hero">
@@ -16,7 +24,7 @@ export default function Home() {
 
           <Link className="health-badge" href="/health">
             <span className="health-badge-dot" aria-hidden="true" />
-            Documentation health: 100 · Healthy
+            Documentation health: {health.score} · {healthStatus}
             <span aria-hidden="true">→</span>
           </Link>
 
@@ -57,12 +65,12 @@ export default function Home() {
             </article>
 
             <article>
-              <h3>Standards</h3>
+              <h3>API</h3>
               <p>
-                Establish the conventions that make documentation consistent,
-                usable, and scalable.
+                Explore a working API with an OpenAPI contract, interactive requests,
+                and live responses.
               </p>
-              <Link href="/standards">Explore →</Link>
+              <Link href="/api/health">Explore →</Link>
             </article>
           </div>
         </div>
@@ -95,13 +103,17 @@ export default function Home() {
             <div className="workflow-step">
               <span>03</span>
               <h3>Review</h3>
-              <p>Validate technical accuracy, usability, and editorial quality.</p>
+              <p>
+                Validate technical accuracy, usability, and editorial quality.
+              </p>
             </div>
 
             <div className="workflow-step">
               <span>04</span>
               <h3>Validate</h3>
-              <p>Run automated checks before documentation reaches production.</p>
+              <p>
+                Run automated checks before documentation reaches production.
+              </p>
             </div>
 
             <div className="workflow-step">
@@ -113,7 +125,10 @@ export default function Home() {
             <div className="workflow-step">
               <span>06</span>
               <h3>Maintain</h3>
-              <p>Measure health, identify stale content, and continuously improve.</p>
+              <p>
+                Measure health, identify stale content, and continuously
+                improve.
+              </p>
             </div>
           </div>
         </div>
@@ -132,8 +147,8 @@ export default function Home() {
 
           <div className="health-feature-summary">
             <div>
-              <p className="health-feature-number">100</p>
-              <p className="health-feature-status">Healthy</p>
+              <p className="health-feature-number">{health.score}</p>
+              <p className="health-feature-status">{healthStatus}</p>
             </div>
 
             <div className="health-feature-action">

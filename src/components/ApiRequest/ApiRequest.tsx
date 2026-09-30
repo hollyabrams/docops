@@ -4,6 +4,8 @@ import { useState } from "react";
 
 import styles from "./ApiRequest.module.scss";
 
+const API_BASE_URL = "https://docops-gamma.vercel.app";
+
 type ApiRequestProps = {
   method: "GET";
   path: string;
@@ -18,6 +20,8 @@ export default function ApiRequest({
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [copied, setCopied] = useState(false);
+
+  const curlCommand = `curl ${API_BASE_URL}${path}`;
 
   async function sendRequest() {
     setIsLoading(true);
@@ -45,13 +49,7 @@ export default function ApiRequest({
     setError(null);
   }
 
-  function getCurlCommand() {
-    return `curl ${window.location.origin}${path}`;
-  }
-
   async function copyCurlCommand() {
-    const curlCommand = getCurlCommand();
-
     await navigator.clipboard.writeText(curlCommand);
     setCopied(true);
 
@@ -91,11 +89,8 @@ export default function ApiRequest({
       </div>
 
       <div className={styles.curlRow}>
-        <span className={styles.curlLabel}>cURL</span>
 
-        <code className={styles.curlCommand}>
-          curl {path}
-        </code>
+        <code className={styles.curlCommand}>{curlCommand}</code>
 
         <button
           className={styles.copyButton}
