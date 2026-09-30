@@ -50,9 +50,8 @@ export default function DocumentationHealth({
               <p className={styles.message}>{check.message}</p>
             </div>
 
-            <p
-              className={`${styles.checkStatus} ${styles[check.status]}`}
-            >
+            <p className={`${styles.checkStatus} ${styles[check.status]}`}>
+              <span className={styles.statusDot} aria-hidden="true" />
               {getStatusLabel(check.status)}
             </p>
           </div>

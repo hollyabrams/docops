@@ -20,54 +20,85 @@ export type DocumentationHealth = {
   checks: HealthCheck[];
 };
 
-const documentationRoutes = [
-  "docs-as-code",
-  "standards",
-  "operations",
-  "governance",
-  "developer-docs",
-];
+type DocumentationPage = {
+  route: string;
+  filePath: string;
+  fileType: "mdx" | "tsx";
+};
+
+function getDocumentationPages(): DocumentationPage[] {
+  const appDirectory = path.join(process.cwd(), "src", "app");
+  const pages: DocumentationPage[] = [];
+
+  function walkDirectory(directory: string) {
+    const entries = fs.readdirSync(directory, { withFileTypes: true });
+
+    entries.forEach((entry) => {
+      const entryPath = path.join(directory, entry.name);
+
+      if (entry.isDirectory()) {
+        walkDirectory(entryPath);
+        return;
+      }
+
+      if (entry.name !== "page.mdx" && entry.name !== "page.tsx") {
+        return;
+      }
+
+      const relativeDirectory = path.relative(
+        appDirectory,
+        path.dirname(entryPath),
+      );
+
+      const route =
+        relativeDirectory === ""
+          ? "/"
+          : `/${relativeDirectory.split(path.sep).join("/")}`;
+
+      pages.push({
+        route,
+        filePath: entryPath,
+        fileType: entry.name === "page.mdx" ? "mdx" : "tsx",
+      });
+    });
+  }
+
+  walkDirectory(appDirectory);
+
+  return pages.sort((a, b) => a.route.localeCompare(b.route));
+}
+
+const documentationPages = getDocumentationPages();
 
 function checkDocumentationPages(): HealthCheck {
-  const appDirectory = path.join(process.cwd(), "src", "app");
-
-  const existingPages = documentationRoutes.filter((route) => {
-    const pagePath = path.join(appDirectory, route, "page.mdx");
-
-    return fs.existsSync(pagePath);
-  });
-
-  const allPagesExist = existingPages.length === documentationRoutes.length;
+  const pageCount = documentationPages.length;
 
   return {
     id: "documentation-pages",
     name: "Documentation pages",
-    status: allPagesExist ? "passing" : "failing",
-    message: allPagesExist
-      ? `${existingPages.length} documentation pages found.`
-      : `${existingPages.length} of ${documentationRoutes.length} documentation pages found.`,
+    status: pageCount > 0 ? "passing" : "failing",
+    message:
+      pageCount > 0
+        ? `${pageCount} documentation pages found.`
+        : "No documentation pages found.",
   };
 }
 
 function checkDocumentStructure(): HealthCheck {
-  const appDirectory = path.join(process.cwd(), "src", "app");
+  const mdxPages = documentationPages.filter(
+    (page) => page.fileType === "mdx",
+  );
 
   const invalidDocuments: string[] = [];
 
-  documentationRoutes.forEach((route) => {
-    const pagePath = path.join(appDirectory, route, "page.mdx");
-
-    if (!fs.existsSync(pagePath)) {
-      return;
-    }
-
-    const content = fs.readFileSync(pagePath, "utf8");
+  mdxPages.forEach((page) => {
+    const content = fs.readFileSync(page.filePath, "utf8");
 
     const h1Count = (content.match(/^# .+$/gm) ?? []).length;
     const h2Count = (content.match(/^## .+$/gm) ?? []).length;
 
     if (h1Count !== 1 || h2Count === 0) {
-      invalidDocuments.push(route);
+      invalidDocuments.push(page.route);
     }
   });
 
@@ -77,7 +108,7 @@ function checkDocumentStructure(): HealthCheck {
     status: invalidDocuments.length === 0 ? "passing" : "failing",
     message:
       invalidDocuments.length === 0
-        ? `${documentationRoutes.length} documentation pages meet structural requirements.`
+        ? `${mdxPages.length} documentation pages meet structural requirements.`
         : `${invalidDocuments.length} ${
             invalidDocuments.length === 1 ? "page does" : "pages do"
           } not meet structural requirements: ${invalidDocuments.join(", ")}`,
@@ -85,18 +116,14 @@ function checkDocumentStructure(): HealthCheck {
 }
 
 function checkEmptySections(): HealthCheck {
-  const appDirectory = path.join(process.cwd(), "src", "app");
+  const mdxPages = documentationPages.filter(
+    (page) => page.fileType === "mdx",
+  );
 
   const emptySections: string[] = [];
 
-  documentationRoutes.forEach((route) => {
-    const pagePath = path.join(appDirectory, route, "page.mdx");
-
-    if (!fs.existsSync(pagePath)) {
-      return;
-    }
-
-    const content = fs.readFileSync(pagePath, "utf8");
+  mdxPages.forEach((page) => {
+    const content = fs.readFileSync(page.filePath, "utf8");
 
     const sections = content.split(/^## .+$/gm);
     const headings = [...content.matchAll(/^## (.+)$/gm)];
@@ -105,7 +132,7 @@ function checkEmptySections(): HealthCheck {
       const sectionContent = sections[index + 1]?.trim();
 
       if (!sectionContent) {
-        emptySections.push(`${route}: ${heading[1]}`);
+        emptySections.push(`${page.route}: ${heading[1]}`);
       }
     });
   });

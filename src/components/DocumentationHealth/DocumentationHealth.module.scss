@@ -53,20 +53,48 @@
 }
 
 .checkStatus {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: 8px;
   flex-shrink: 0;
   margin: 0;
+  padding: 4px 14px;
+  border: 1px solid $color-border;
+  border-radius: 999px;
+  color: $color-text;
   font-size: 14px;
-  font-weight: 500;
+}
+
+.statusDot {
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  border-radius: 50%;
 }
 
 .passing {
-  color: $color-text;
+  .statusDot {
+    background: #34c759;
+  }
 }
 
-.warning,
-.failing,
+.warning {
+  .statusDot {
+    background: #e3b341;
+  }
+}
+
+.failing {
+  .statusDot {
+    background: #d95c5c;
+  }
+}
+
 .unavailable {
-  color: $color-secondary;
+  .statusDot {
+    background: $color-secondary;
+  }
 }
 
 @media (max-width: $mobile) {
