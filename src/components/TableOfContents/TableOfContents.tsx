@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import styles from "./TableOfContents.module.scss";
 
 type Heading = {
@@ -17,12 +18,15 @@ function createId(text: string) {
 }
 
 export default function TableOfContents() {
+  const pathname = usePathname();
   const [headings, setHeadings] = useState<Heading[]>([]);
 
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
       const elements = Array.from(
-        document.querySelectorAll<HTMLElement>("[data-docs-content] h2")
+        document.querySelectorAll<HTMLElement>(
+          "[data-docs-content] h2"
+        )
       );
 
       const generatedHeadings = elements.map((heading) => {
@@ -41,7 +45,7 @@ export default function TableOfContents() {
     });
 
     return () => cancelAnimationFrame(frame);
-  }, []);
+  }, [pathname]);
 
   if (headings.length === 0) {
     return null;

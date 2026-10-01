@@ -5,7 +5,7 @@ import { publishedReleaseNotesExample } from "@/components/CodeExample/examples"
 
 # Developer documentation is part of the product.
 
-Developer documentation connects technical capability with successful implementation. It should help developers understand what a product does, get started quickly, make informed implementation decisions, and recover when something goes wrong.
+Developer documentation connects what a product can do with how developers actually use it. It should help developers understand the product, get started quickly, make informed implementation decisions, and recover when something goes wrong.
 
 ## Overview
 
@@ -24,11 +24,11 @@ A complete developer experience may include:
 
 These resources serve different purposes but should work as one documentation system.
 
-The goal is not simply to document functionality. The goal is to reduce the effort required to successfully use it.
+The goal is not simply to document functionality. The goal is to make it easier for developers to use the product successfully.
 
 ## Audience
 
-Developer documentation should begin with an understanding of who is building with the product.
+Developer documentation should start with an understanding of who is building with the product.
 
 Different audiences may need different levels of context.
 
@@ -46,7 +46,7 @@ Documentation structure should reflect those needs rather than the internal stru
 
 ## Getting started
 
-A getting started experience should establish a successful path through the product with as little friction as possible.
+A getting started experience should provide a clear path to a working implementation with as little friction as possible.
 
 The path should answer:
 
@@ -65,7 +65,7 @@ Detailed concepts and configuration options can be introduced after the develope
 
 Conceptual documentation explains the system developers are working with.
 
-Strong concept documentation describes relationships, behavior, constraints, and terminology that cannot be communicated effectively through endpoint reference alone.
+Strong concept documentation describes relationships, behavior, constraints, and terminology that are difficult to explain through API reference alone.
 
 For example, an API reference can describe a `status` property and its allowed values.
 
@@ -100,13 +100,13 @@ For example:
   code={publishedReleaseNotesExample}
 />
 
-The example demonstrates more than syntax. TypeScript defines the expected structure of a release note and limits status to known values, making documentation data easier to validate and work with programmatically.
+The example demonstrates more than syntax. TypeScript defines the expected structure of a release note and limits status to known values, making the documentation data easier to validate and use programmatically.
 
-Examples should be treated as maintained documentation assets rather than decorative additions to a page.
+Examples should be maintained as part of the documentation rather than treated as decorative additions to a page.
 
 ## Troubleshooting
 
-Developer documentation should account for failure paths as deliberately as successful ones.
+Developer documentation should cover failure paths as well as successful ones.
 
 Troubleshooting content should help developers move from a symptom to a resolution.
 
@@ -143,13 +143,13 @@ Useful troubleshooting information includes:
   </tbody>
 </table>
 
-Error messages should also provide enough information to support troubleshooting. When possible, documentation should preserve the terminology developers encounter in the product, logs, API responses, and development tools.
+Error messages should also provide enough information to support troubleshooting. When possible, documentation should use the same terminology developers see in the product, logs, API responses, and development tools.
 
 ## Maintenance
 
 Developer documentation changes with the product.
 
-Documentation maintenance should be connected to the engineering lifecycle rather than handled only through periodic cleanup.
+Documentation maintenance should be part of the engineering lifecycle rather than something handled only through periodic cleanup.
 
 Changes that may require documentation include:
 
@@ -162,9 +162,9 @@ Changes that may require documentation include:
 - security requirements
 - implementation patterns that emerge through support
 
-Documentation ownership, repository history, metadata, automated validation, and product release processes can all help identify content that requires attention.
+Documentation ownership, repository history, metadata, automated validation, and product release processes can all help identify content that needs attention.
 
 This is where developer documentation connects back to DocOps.
 
-Documentation becomes easier to trust when its maintenance is part of the same system used to build and change the product.
+Documentation is easier to trust when its maintenance is part of the same system used to build and change the product.
  

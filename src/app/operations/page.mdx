@@ -4,13 +4,13 @@ import Lifecycle from "@/components/Lifecycle/Lifecycle";
 
 # Good documentation needs an operating model.
 
-Documentation does not stay accurate because someone wrote it well once. It stays useful when ownership, priorities, workflows, service levels, and maintenance are deliberately managed.
+Documentation does not stay accurate just because someone wrote it well once. It stays useful when someone is responsible for it, priorities are clear, and maintenance is part of the workflow.
 
 ## Overview
 
-Documentation operations define how documentation work moves through an organization.
+Documentation operations define how documentation work gets done.
 
-An effective operating model answers practical questions:
+A good operating model answers practical questions:
 
 - How does documentation work enter the system?
 - How is it prioritized?
@@ -20,13 +20,13 @@ An effective operating model answers practical questions:
 - What happens after publication?
 - How is stale content identified and resolved?
 
-Without these decisions, documentation work becomes reactive. Requests arrive through unrelated channels, priorities are unclear, reviews depend on individual relationships, and maintenance happens only when someone notices a problem.
+Without these decisions, documentation work becomes reactive. Requests come through different channels, priorities are unclear, reviews depend on who knows whom, and maintenance happens only when someone notices a problem.
 
-DocOps treats these activities as a repeatable system.
+DocOps brings these activities into one repeatable system.
 
 ## Intake
 
-Every documentation request should begin with enough information to evaluate and route the work.
+Every documentation request should start with enough information to understand the work and decide what happens next.
 
 A useful intake captures:
 
@@ -69,13 +69,11 @@ A useful intake captures:
   </tbody>
 </table>
 
-The goal is not to create bureaucracy. The goal is to prevent documentation work from beginning without the information required to complete it.
-
 ## Prioritization
 
 Not every request has the same urgency or impact.
 
-Documentation work can be evaluated using factors such as:
+Documentation work can be prioritized using factors such as:
 
 1. **User impact** — How many users are affected, and how severely?
 2. **Release dependency** — Does documentation block or support a product release?
@@ -83,11 +81,9 @@ Documentation work can be evaluated using factors such as:
 4. **Reach** — Is the content used across multiple products or workflows?
 5. **Effort** — What work and dependencies are required to complete the change?
 
-Priority should reflect documented criteria rather than whichever request arrives most loudly.
-
 ## Service levels
 
-Service levels establish expectations without pretending every documentation request is identical.
+Service levels set expectations without pretending every documentation request is the same.
 
 <table>
   <thead>
@@ -126,7 +122,7 @@ Service levels establish expectations without pretending every documentation req
   </tbody>
 </table>
 
-These targets are examples, not universal rules. A documentation team should define service levels based on staffing, release practices, complexity, and organizational needs.
+These targets are examples, not universal rules. Each documentation team should set service levels based on its staffing, release practices, workload, and priorities.
 
 The important part is making expectations visible.
 
@@ -136,22 +132,22 @@ Documentation work does not end at publication.
 
 <Lifecycle />
 
-Each stage should have a clear entry condition, expected output, and owner. That makes work easier to track and exposes where documentation is waiting or blocked.
+Each stage should have a clear starting point, expected output, and owner. This makes work easier to track and shows where documentation is waiting or blocked.
 
 ## Ownership
 
 Every maintained document should have an identifiable owner.
 
-Ownership does not mean one person must know everything in the document. It means someone is accountable for ensuring the content has the right reviewers and remains part of the maintenance system.
+Ownership does not mean one person has to know everything in a document. It means someone is responsible for making sure the content has the right reviewers and stays in the maintenance cycle.
 
-A practical ownership model separates responsibilities:
+A practical ownership model makes the responsibilities clear:
 
 - **Documentation owner** — accountable for content quality and lifecycle.
 - **Subject matter expert** — validates technical or product accuracy.
 - **Reviewer** — evaluates the change against editorial and technical standards.
 - **Approver** — provides required approval when risk or governance requires it.
 
-For small teams, one person may perform several roles. The responsibilities should still be explicit.
+On a small team, one person may fill several roles. The responsibilities should still be clear.
 
 ## Maintenance
 
@@ -169,10 +165,8 @@ Maintenance signals can include:
 - ownership changes
 - deprecated functionality
 
-These signals can eventually feed a documentation health model that identifies content requiring attention.
+These signals can eventually feed a documentation health model that identifies content that needs attention.
 
-DocOps will use automation where practical to turn observable maintenance signals into actionable work.
-
----
+DocOps can use automation to turn these signals into work that needs to be done.
 
 **Publication is a milestone. Maintenance is the operating model.**

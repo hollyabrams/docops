@@ -2,28 +2,28 @@
 
 # Documentation belongs in the development workflow.
 
-DocOps treats documentation as versioned, reviewable, testable, and maintainable source. Documentation changes move through the same engineering practices used to build and ship software.
+DocOps treats documentation like software: it lives in version control, goes through review, can be tested, and is built and published through the same workflow used for the application.
 
 ## Overview
 
-Docs as code applies software development practices to documentation.
+Docs as code means using software development practices to manage documentation.
 
-Instead of managing documentation exclusively through a content management system or isolated authoring environment, source files live in version control alongside the tools required to build, validate, and publish them.
+Instead of keeping documentation in a separate content management system, the source files live in the repository with the code and tools used to build and publish them.
 
-This creates a traceable workflow in which documentation can be reviewed, tested, automated, and improved continuously.
+This makes it easier to review changes, catch problems, automate repetitive work, and see what changed over time.
 
-A docs-as-code system typically provides:
+A docs-as-code system typically includes:
 
 - **Version control** for documentation source.
 - **Peer review** through pull requests.
-- **Automated validation** before changes are published.
-- **Repeatable builds** across development and production environments.
-- **Deployment automation** through CI/CD.
-- **Change history** that records what changed, when, and why.
+- **Automated checks** before changes are published.
+- **Repeatable builds** for local development and production.
+- **CI/CD** for building and deploying documentation.
+- **Change history** that shows what changed, when, and why.
 
 ## Architecture
 
-DocOps separates content, presentation, validation, and delivery while keeping them within one version-controlled system.
+DocOps keeps content, presentation, validation, and publishing in the same version-controlled system.
 
 ```text
 Documentation source
@@ -32,7 +32,7 @@ Documentation source
         ↓
    Pull request
         ↓
-Automated validation
+  Automated checks
         ↓
       Build
         ↓
@@ -41,15 +41,15 @@ Automated validation
 Published documentation
 ```
 
-The DocOps application uses Next.js and MDX to combine structured documentation content with reusable React components.
+The DocOps application uses Next.js and MDX for documentation and React components.
 
-SCSS controls presentation independently from documentation source, while GitHub Actions provides the foundation for automated validation and deployment.
+SCSS handles the presentation separately from the documentation content. 
 
 ## Repository
 
-Documentation infrastructure should be understandable from the repository itself.
+The repository should make it easy to understand how the documentation works.
 
-DocOps organizes application routes, reusable components, styles, documentation assets, and automation separately:
+DocOps keeps application routes, reusable components, styles, documentation assets, and automation in separate areas:
 
 ```text
 docops/
@@ -66,13 +66,11 @@ docops/
 └── package.json
 ```
 
-This separation keeps content maintainable without hiding the engineering system that supports it.
-
 ## Local development
 
-Contributors should be able to reproduce the documentation environment locally.
+Contributors should be able to run the documentation site on their own machine.
 
-Install project dependencies:
+Install the project dependencies:
 
 ```bash
 npm install
@@ -84,9 +82,9 @@ Start the local development server:
 just run
 ```
 
-The development environment provides fast feedback before a documentation change enters review.
+This makes it easy to see changes before they are submitted for review.
 
-A production build can be validated locally with:
+A production build can also be tested locally:
 
 ```bash
 npm run build
@@ -94,40 +92,40 @@ npm run build
 
 ## Git workflow
 
-Documentation changes follow a version-controlled workflow.
+Documentation changes follow the same basic workflow as code changes.
 
-1. Create or update documentation source.
+1. Create or update the documentation.
 2. Review the change locally.
-3. Run the required validation.
+3. Run the required checks.
 4. Commit the change with a meaningful message.
 5. Push the change to the remote repository.
-6. Review and merge through the established contribution process.
+6. Review and merge the change.
 
-Small, focused commits make documentation history easier to understand and changes easier to review.
+Small, focused commits make it easier to understand the history and review individual changes.
 
 ## Validation
 
-Publishing documentation should not depend entirely on manual inspection.
+Documentation should not depend entirely on someone manually checking every change.
 
-A mature documentation pipeline can validate:
+A documentation pipeline can check for:
 
-- application builds
+- application build errors
 - broken links
-- style rules
-- required metadata
-- OpenAPI specifications
-- code examples
-- accessibility requirements
-- stale content signals
+- style problems
+- missing metadata
+- OpenAPI problems
+- code example errors
+- accessibility issues
+- stale content
 
-DocOps will progressively implement these checks as executable tooling rather than describing them only as recommendations.
+DocOps will turn these checks into actual tools over time instead of treating them as a list of recommendations.
 
 ## Publishing
 
-DocOps currently uses GitHub Actions to build and deploy the application to GitHub Pages.
+Publishing should be part of the same workflow as writing and reviewing documentation.
 
-A push to the production branch triggers the deployment workflow. The workflow installs dependencies, creates a production build, uploads the static output, and deploys the resulting site.
+Once a change has been reviewed and the required checks pass, the documentation can be built and published through the project's deployment process.
 
-This makes the deployment configuration part of the repository and gives publishing the same traceability as the documentation itself.
+Keeping publishing connected to the repository makes the process repeatable and gives the team a clear history of what was published and when.
 
 **The system described by DocOps is also the system used to build DocOps.**

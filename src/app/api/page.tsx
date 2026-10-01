@@ -13,8 +13,30 @@ export default function ApiReferencePage() {
       <h2>API operations</h2>
 
       <p>
-        Use the API reference navigation to explore available operations,
-        including request details, response properties, and example responses.
+        Explore available API operations, including request details, response
+        properties, and example responses.
+      </p>
+
+      <h2>Documentation Health</h2>
+
+      <p>
+        Retrieve the current Documentation Health score, overall status, and
+        individual health checks.
+      </p>
+
+      <p>
+        <a href="/api/health">View Documentation Health</a>
+      </p>
+
+      <h2>SDKs</h2>
+
+      <p>
+        Use the DocOps API from TypeScript, Python, or JavaScript with the
+        DocOps SDKs.
+      </p>
+
+      <p>
+        <a href="/api/sdks">View the SDKs</a>
       </p>
     </>
   );

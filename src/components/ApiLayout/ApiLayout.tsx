@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
-import Link from "next/link";
-import { apiPages } from "@/data/api/apiPages";
+import TableOfContents from "@/components/TableOfContents/TableOfContents";
 import styles from "./ApiLayout.module.scss";
 
 type ApiLayoutProps = {
@@ -12,17 +11,12 @@ export default function ApiLayout({ children }: ApiLayoutProps) {
     <main className={styles.apiLayout}>
       <aside className={styles.sidebar}>
         <p className={styles.sidebarTitle}>API Reference</p>
-
-        <nav aria-label="API reference">
-          {apiPages.map((page) => (
-            <Link key={page.href} href={page.href}>
-              {page.title}
-            </Link>
-          ))}
-        </nav>
+        <TableOfContents />
       </aside>
 
-      <article className={styles.content}>{children}</article>
+      <article className={styles.content} data-docs-content>
+        {children}
+      </article>
     </main>
   );
 }
